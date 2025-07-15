@@ -1,0 +1,97 @@
+# Prometheus configuration for Crypto Data Pipeline MVP
+global:
+  scrape_interval: 15s          # Set the scrape interval to every 15 seconds
+  evaluation_interval: 15s      # Evaluate rules every 15 seconds
+  external_labels:
+    cluster: 'crypto-pipeline'
+    environment: 'mvp'
+
+# Alertmanager configuration (optional for MVP)
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets: []  # Add alertmanager if needed
+
+# Load rules once and periodically evaluate them
+rule_files:
+  - "/etc/prometheus/rules/*.yml"
+
+# Scrape configuration
+scrape_configs:
+  # Prometheus self-monitoring
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+    scrape_interval: 30s
+    metrics_path: /metrics
+
+  # Airflow metrics
+  - job_name: 'airflow'
+    static_configs:
+      - targets: ['airflow-webserver:8080']
+    scrape_interval: 30s
+    metrics_path: /admin/metrics
+    scrape_timeout: 10s
+    honor_labels: true
+
+  # Kafka metrics (if JMX is enabled)
+  - job_name: 'kafka'
+    static_configs:
+      - targets: ['kafka:9101']
+    scrape_interval: 30s
+    metrics_path: /metrics
+    scrape_timeout: 10s
+
+  # MongoDB metrics (using mongodb_exporter if available)
+  - job_name: 'mongodb'
+    static_configs:
+      - targets: ['mongodb:27017']
+    scrape_interval: 30s
+    metrics_path: /metrics
+    scrape_timeout: 10s
+    params:
+      collect.database: ['true']
+      collect.collection: ['true']
+      collect.topmetrics: ['true']
+
+  # Node/system metrics (using node_exporter if available)
+  - job_name: 'node'
+    static_configs:
+      - targets: ['localhost:9100']
+    scrape_interval: 15s
+    metrics_path: /metrics
+
+  # Docker container metrics (using cadvisor if available)
+  - job_name: 'docker'
+    static_configs:
+      - targets: ['localhost:8080']
+    scrape_interval: 30s
+    metrics_path: /metrics
+
+  # Custom application metrics from our pipeline
+  - job_name: 'crypto-pipeline'
+    static_configs:
+      - targets: ['airflow-webserver:8080']
+    scrape_interval: 15s
+    metrics_path: /admin/metrics
+    params:
+      format: ['prometheus']
+
+  # Grafana metrics
+  - job_name: 'grafana'
+    static_configs:
+      - targets: ['grafana:3000']
+    scrape_interval: 30s
+    metrics_path: /metrics
+
+# Storage configuration
+storage:
+  tsdb:
+    path: /prometheus
+    retention.time: 30d
+    retention.size: 10GB
+
+# Web configuration
+web:
+  enable_lifecycle: true
+  enable_admin_api: true

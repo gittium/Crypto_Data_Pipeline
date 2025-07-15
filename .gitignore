@@ -1,0 +1,571 @@
+# ============================================================================
+# CRYPTO DATA PIPELINE - .GITIGNORE
+# ============================================================================
+
+# ============================================================================
+# ENVIRONMENT & SECRETS (CRITICAL - NEVER COMMIT)
+# ============================================================================
+.env
+.env.local
+.env.*.local
+.env.production
+.env.staging
+.env.development
+
+# Secret files
+secrets/
+*.key
+*.pem
+*.p12
+*.pfx
+credentials.json
+service-account.json
+
+# API Keys and Tokens
+*api_key*
+*token*
+*secret*
+*password*
+auth.json
+
+# AWS Credentials
+.aws/
+aws-credentials.json
+
+# ============================================================================
+# PYTHON
+# ============================================================================
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# PEP 582
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# ============================================================================
+# DOCKER & CONTAINERS
+# ============================================================================
+# Docker
+.docker/
+.dockerignore
+docker-compose.override.yml
+docker-compose.*.yml
+!docker-compose.yml
+
+# Container data
+containers/
+
+# ============================================================================
+# DATA DIRECTORIES (PROTECT ACTUAL DATA)
+# ============================================================================
+# Raw data files
+data/raw/*
+!data/raw/.gitkeep
+
+# Processed data
+data/processed/*
+!data/processed/.gitkeep
+
+# Backup data
+data/backup/
+data/archive/
+
+# CSV files with actual data
+*.csv
+!sample.csv
+!test.csv
+
+# Parquet files
+*.parquet
+
+# JSON data files
+data*.json
+crypto_data*.json
+
+# Database dumps
+*.sql
+*.dump
+*.backup
+
+# ============================================================================
+# LOGS & MONITORING
+# ============================================================================
+# Log files
+*.log
+logs/
+data/logs/*
+!data/logs/.gitkeep
+
+# Airflow logs
+airflow/logs/
+dags/logs/
+
+# Application logs
+app.log
+error.log
+debug.log
+access.log
+
+# Monitoring data
+monitoring/data/
+
+# ============================================================================
+# AIRFLOW SPECIFIC
+# ============================================================================
+# Airflow
+airflow.cfg
+airflow.db
+airflow-webserver.pid
+standalone_admin_password.txt
+
+# Airflow database
+*.db
+
+# Airflow logs
+logs/
+
+# ============================================================================
+# KAFKA & STREAMING
+# ============================================================================
+# Kafka data
+kafka-logs/
+kafka_data/
+zookeeper_data/
+
+# Kafka connect
+connect.log
+
+# ============================================================================
+# NIFI
+# ============================================================================
+# NiFi data directories (contain actual flow data)
+nifi_data/database_repository/*
+!nifi_data/database_repository/.gitkeep
+
+nifi_data/flowfile_repository/*
+!nifi_data/flowfile_repository/.gitkeep
+
+nifi_data/content_repository/*
+!nifi_data/content_repository/.gitkeep
+
+nifi_data/provenance_repository/*
+!nifi_data/provenance_repository/.gitkeep
+
+nifi_data/logs/*
+!nifi_data/logs/.gitkeep
+
+# NiFi configuration (may contain sensitive data)
+nifi_data/conf/flow.xml.gz
+nifi_data/conf/authorizations.xml
+nifi_data/conf/users.xml
+nifi_data/conf/login-identity-providers.xml
+
+# ============================================================================
+# DATABASES
+# ============================================================================
+# MongoDB data
+mongodb_data/
+mongo_data/
+
+# PostgreSQL data
+postgres_data/
+postgresql_data/
+
+# Database dumps
+*.dump
+*.sql
+
+# ============================================================================
+# CLOUD & AWS
+# ============================================================================
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+
+# AWS
+.aws/
+
+# Google Cloud
+.gcloud/
+gcloud-service-key.json
+
+# Azure
+.azure/
+
+# ============================================================================
+# IDE & EDITORS
+# ============================================================================
+# Visual Studio Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# PyCharm
+.idea/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# VS Code
+.vscode/
+
+# ============================================================================
+# OPERATING SYSTEM
+# ============================================================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ============================================================================
+# TEMPORARY & CACHE FILES
+# ============================================================================
+# Temporary files
+*.tmp
+*.temp
+temp/
+tmp/
+
+# Cache directories
+.cache/
+cache/
+
+# Backup files
+*.bak
+*.backup
+*.old
+*.orig
+
+# ============================================================================
+# PACKAGE MANAGERS
+# ============================================================================
+# npm
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Yarn
+.yarn-integrity
+.yarn/
+yarn.lock
+
+# pip
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ============================================================================
+# MONITORING & METRICS
+# ============================================================================
+# Grafana
+grafana_data/
+monitoring/grafana/data/
+
+# Prometheus
+prometheus_data/
+monitoring/prometheus/data/
+
+# Alertmanager
+alertmanager_data/
+
+# ============================================================================
+# DEVELOPMENT & TESTING
+# ============================================================================
+# Test files
+test_output/
+test_results/
+
+# Coverage reports
+htmlcov/
+.coverage
+
+# Performance test results
+performance_results/
+
+# Load test data
+load_test_data/
+
+# ============================================================================
+# DEPLOYMENT
+# ============================================================================
+# Deployment artifacts
+deploy/
+deployment/
+
+# Kubernetes
+k8s/secrets/
+
+# Helm
+charts/*/charts/
+charts/*/requirements.lock
+
+# ============================================================================
+# MISCELLANEOUS
+# ============================================================================
+# Archives
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Large files
+*.iso
+*.dmg
+
+# Generated files
+generated/
+
+# Documentation build
+docs/build/
+docs/_build/
+
+# Local development overrides
+local/
+local_*
+
+# IDE workspace files
+*.code-workspace
+
+# ============================================================================
+# PROJECT SPECIFIC IGNORES
+# ============================================================================
+# Crypto API responses (may contain sensitive rate limit info)
+api_responses/
+crypto_api_cache/
+
+# Large data files
+historical_data/
+bulk_data/
+
+# Personal notes and documentation
+NOTES.md
+TODO.md
+personal/
+
+# Local configuration overrides
+local_config/
+dev_config/
+
+# Sample data (comment out if you want to include samples)
+# sample_data/
+
+# Performance logs
+performance/
+benchmarks/
+
+# Migration scripts output
+migrations/output/
+
+# ============================================================================
+# KEEP THESE IMPORTANT FILES (NEGATIVE PATTERNS)
+# ============================================================================
+# Keep important configuration templates
+!.env.example
+!.env.template
+!config.example.yml
+
+# Keep sample/example files
+!sample_data/sample.csv
+!examples/
+!templates/
+
+# Keep documentation
+!README.md
+!CHANGELOG.md
+!LICENSE
+!docs/
+
+# Keep configuration files
+!docker-compose.yml
+!requirements.txt
+!Makefile
+
+# Keep .gitkeep files for empty directories
+!.gitkeep
+
+# Keep CI/CD configuration
+!.github/
+!.gitlab-ci.yml
+!.travis.yml
+
+# ============================================================================
+# END OF GITIGNORE
+# ============================================================================
