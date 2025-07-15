@@ -1,14 +1,10 @@
-# 🚀 Crypto Data Pipeline MVP
+# 🚀 Crypto Data Pipeline 
 
 A comprehensive real-time cryptocurrency data pipeline integrating **Apache Airflow**, **Apache NiFi**, **Kafka**, **MongoDB**, **S3**, and **Amazon Athena** for streaming analytics and business intelligence.
 
 ## 🏗️ Architecture Overview
 
-```
-📊 Crypto APIs → NiFi → Kafka → [MongoDB (Real-time) + S3 (Analytics)] → Athena → Dashboards
-                    ↓
-              Apache Airflow (Orchestration)
-```
+![Preview](workflow_api_pipeline.jpg)
 
 ### Data Flow
 1. **Data Ingestion**: CoinGecko/CoinAPI → Apache NiFi
