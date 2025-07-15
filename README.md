@@ -258,17 +258,6 @@ docker-compose exec airflow-webserver airflow dags test crypto_data_pipeline 202
 - Implement data masking for sensitive fields
 
 
-### Testing
-```bash
-# Run all tests
-pytest tests/
-
-# Run specific test file
-pytest tests/test_crypto_api.py
-
-# Run with coverage
-pytest --cov=dags tests/
-```
 
 ## 📝 License
 
